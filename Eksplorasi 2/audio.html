@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Play and Stop Sound with JavaScript</title>
+  </head>
+  <body>
+    <h1>Klik Play Untuk Memulai Musik</h1>
+    <button id="play">Play</button>
+    <button id="stop">Stop</button>
+    <script>
+      let play = document.getElementById("play");
+      let stop = document.getElementById("stop");
+      let audio;
+
+      function playMusic() {
+        if (!audio) {
+          audio = new Audio("audio.mp3");
+        }
+        audio.play().catch((error) => {
+          console.error("Error playing audio:", error);
+        });
+      }
+
+      function stopMusic() {
+        if (audio) {
+          audio.pause();
+          audio.currentTime = 0; // Reset audio to start
+        }
+      }
+
+      play.addEventListener("click", playMusic);
+      stop.addEventListener("click", stopMusic);
+    </script>
+  </body>
+</html>
